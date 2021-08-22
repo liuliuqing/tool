@@ -1,0 +1,41 @@
+
+模板语法v-text  v-html  v-bind:title v-if v-else-if v-else  v-show
+计算属性Computed： 内置缓存，值没有变化不会执行调用;setter  getert
+方法执行methods：
+监听变化watch: 也具备了缓存机制与computed一致，但语法更复杂
+样式绑定:class="{actived: isActived}"   :class="[actived]"动态设置actived的样式名
+        :style="styleobj"  :style="[styleobj]"  :style="[styleobj, {fontSize: '12px'}]"
+列表 v-for="item of list" 列表更建议用of
+     v-of="(item, index) of list"  :key="index"
+	 改变数组的方法a:使用push\splice\slice等  b:重新定义数组，改变引用  c:Vue.set(list, index, 'ss')
+	 改变对象的方法a:重新定义数组  b:Vue.set(obj, 'ss')  c:vm.$set(obj, 'ss')
+		 
+
+1、【定义子组件】如果不起作用，需要定义is='组件名'
+<table>
+   <tr is="row"></tr>
+</table>
+Vue.component('row', {
+  template: '<tr></tr>'
+})
+
+2、【子组件定义data必须是个函数】
+Vue.component('row', {
+  data: function(){
+     return{
+	  content : 'xxx'
+	 }  
+  } 
+  template: '<tr>{{content}}</tr>'
+})
+
+3、【ref定义组件操作dom】
+<div ref='box'></div>
+this.$refs.box
+
+4、【父子组件传值】
+父----子：通过属性传值给子组件， <child :count="0" @handChile="xx"> </child>  子组件通过props: ['count']接收,
+          因为vue单向数据流原理，子组件只可以接受父组件的值，不可以修改父组件的值
+		  count接收的值只可以展示不能修改，需要克隆复制一份conut进行修改
+          
+子----父：通过事件传值给父组件，this.$emit('handChile'，params)
