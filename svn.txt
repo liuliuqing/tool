@@ -1,0 +1,18 @@
+Checkout(拉取一份源代码)-->Update(获得最新的代码) -->作出自己的修改并调试成功 --> Commit(大家就可以看到你的修改了) 。只要不是修改了同一行程序，SVN都会自动合并两种修改。如果是同一行，SVN 会提示文件 Conflict, 冲突，需要手动确认。Status (操作只是提供了一个变动列表，但并不提供变动的详细信息)， diff( 来查看这些变动的详细信息)，Revert(放弃修改内容回退)，Merge(自动处理可以合并的内容，其他会被当作冲突)，Resolve(帮助用户找出冲突)
+
+
+单个文件回退版本： 文件右键 --> show log ->  右键revision部分 ->revert ro the revision -->回退至此版本  （然后再commit提交）
+
+整个文件回退版本： 文件右键 --> show log ->  右键最下path部分 ->保存版本文件 -->重命名后重新commit
+
+文件冲突：
+<<<<<<
+======
+
+
+合并版本：开发中的代码 branches -> dev 需要合并到主干 trunk
+1、选择主干上的源代码文件，右键选择tortoiseSVN菜单，点击合并merge,
+2、选择merge two different trees，如图，也可使用merge a range of revisions 但在报 from url must be ancestrally related to to url 错误的情况下选择使用第二种
+3、在from中选择 trunk ，在to中选择 branches -> dev，
+4、merge：compare whitespaces : 比较空白字符
+5、将主干（trunk）上合并过的文件提交commit到svn代码库
