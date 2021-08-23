@@ -1,17 +1,17 @@
 
-Ä£°åÓï·¨v-text  v-html  v-bind:title v-if v-else-if v-else  v-show
-¼ÆËãÊôĞÔComputed£º ÄÚÖÃ»º´æ£¬ÖµÃ»ÓĞ±ä»¯²»»áÖ´ĞĞµ÷ÓÃ;setter  getert
-·½·¨Ö´ĞĞmethods£º
-¼àÌı±ä»¯watch: Ò²¾ß±¸ÁË»º´æ»úÖÆÓëcomputedÒ»ÖÂ£¬µ«Óï·¨¸ü¸´ÔÓ
-ÑùÊ½°ó¶¨:class="{actived: isActived}"   :class="[actived]"¶¯Ì¬ÉèÖÃactivedµÄÑùÊ½Ãû
+æ¨¡æ¿è¯­æ³•v-text  v-html  v-bind:title v-if v-else-if v-else  v-show
+è®¡ç®—å±æ€§Computedï¼š å†…ç½®ç¼“å­˜ï¼Œå€¼æ²¡æœ‰å˜åŒ–ä¸ä¼šæ‰§è¡Œè°ƒç”¨;setter  getert
+æ–¹æ³•æ‰§è¡Œmethodsï¼š
+ç›‘å¬å˜åŒ–watch: ä¹Ÿå…·å¤‡äº†ç¼“å­˜æœºåˆ¶ä¸computedä¸€è‡´ï¼Œä½†è¯­æ³•æ›´å¤æ‚
+æ ·å¼ç»‘å®š:class="{actived: isActived}"   :class="[actived]"åŠ¨æ€è®¾ç½®activedçš„æ ·å¼å
         :style="styleobj"  :style="[styleobj]"  :style="[styleobj, {fontSize: '12px'}]"
-ÁĞ±í v-for="item of list" ÁĞ±í¸ü½¨ÒéÓÃof
+åˆ—è¡¨ v-for="item of list" åˆ—è¡¨æ›´å»ºè®®ç”¨of
      v-of="(item, index) of list"  :key="index"
-	 ¸Ä±äÊı×éµÄ·½·¨a:Ê¹ÓÃpush\splice\sliceµÈ  b:ÖØĞÂ¶¨ÒåÊı×é£¬¸Ä±äÒıÓÃ  c:Vue.set(list, index, 'ss')
-	 ¸Ä±ä¶ÔÏóµÄ·½·¨a:ÖØĞÂ¶¨ÒåÊı×é  b:Vue.set(obj, 'ss')  c:vm.$set(obj, 'ss')
+	 æ”¹å˜æ•°ç»„çš„æ–¹æ³•a:ä½¿ç”¨push\splice\sliceç­‰  b:é‡æ–°å®šä¹‰æ•°ç»„ï¼Œæ”¹å˜å¼•ç”¨  c:Vue.set(list, index, 'ss')
+	 æ”¹å˜å¯¹è±¡çš„æ–¹æ³•a:é‡æ–°å®šä¹‰æ•°ç»„  b:Vue.set(obj, 'ss')  c:vm.$set(obj, 'ss')
 		 
 
-1¡¢¡¾¶¨Òå×Ó×é¼ş¡¿Èç¹û²»Æğ×÷ÓÃ£¬ĞèÒª¶¨Òåis='×é¼şÃû'
+1ã€ã€å®šä¹‰å­ç»„ä»¶ã€‘å¦‚æœä¸èµ·ä½œç”¨ï¼Œéœ€è¦å®šä¹‰is='ç»„ä»¶å'
 <table>
    <tr is="row"></tr>
 </table>
@@ -19,8 +19,9 @@ Vue.component('row', {
   template: '<tr></tr>'
 })
 
-2¡¢¡¾×Ó×é¼ş¶¨Òådata±ØĞëÊÇ¸öº¯Êı¡¿
+2ã€ã€å­ç»„ä»¶å®šä¹‰dataå¿…é¡»æ˜¯ä¸ªå‡½æ•°ã€‘
 Vue.component('row', {
+  props: [],
   data: function(){
      return{
 	  content : 'xxx'
@@ -29,13 +30,99 @@ Vue.component('row', {
   template: '<tr>{{content}}</tr>'
 })
 
-3¡¢¡¾ref¶¨Òå×é¼ş²Ù×÷dom¡¿
+3ã€ã€refå®šä¹‰ç»„ä»¶æ“ä½œdomã€‘
 <div ref='box'></div>
 this.$refs.box
 
-4¡¢¡¾¸¸×Ó×é¼ş´«Öµ¡¿
-¸¸----×Ó£ºÍ¨¹ıÊôĞÔ´«Öµ¸ø×Ó×é¼ş£¬ <child :count="0" @handChile="xx"> </child>  ×Ó×é¼şÍ¨¹ıprops: ['count']½ÓÊÕ,
-          ÒòÎªvueµ¥ÏòÊı¾İÁ÷Ô­Àí£¬×Ó×é¼şÖ»¿ÉÒÔ½ÓÊÜ¸¸×é¼şµÄÖµ£¬²»¿ÉÒÔĞŞ¸Ä¸¸×é¼şµÄÖµ
-		  count½ÓÊÕµÄÖµÖ»¿ÉÒÔÕ¹Ê¾²»ÄÜĞŞ¸Ä£¬ĞèÒª¿ËÂ¡¸´ÖÆÒ»·İconut½øĞĞĞŞ¸Ä
+4ã€ã€çˆ¶å­ç»„ä»¶ä¼ å€¼ã€‘
+çˆ¶----å­ï¼šé€šè¿‡å±æ€§ä¼ å€¼ç»™å­ç»„ä»¶ï¼Œ <child :count="0" @handChile="xx"> </child>  å­ç»„ä»¶é€šè¿‡props: ['count']æ¥æ”¶,
+          å› ä¸ºvueå•å‘æ•°æ®æµåŸç†ï¼Œå­ç»„ä»¶åªå¯ä»¥æ¥å—çˆ¶ç»„ä»¶çš„å€¼ï¼Œä¸å¯ä»¥ä¿®æ”¹çˆ¶ç»„ä»¶çš„å€¼
+		  countæ¥æ”¶çš„å€¼åªå¯ä»¥å±•ç¤ºä¸èƒ½ä¿®æ”¹ï¼Œéœ€è¦å…‹éš†å¤åˆ¶ä¸€ä»½conutè¿›è¡Œä¿®æ”¹
           
-×Ó----¸¸£ºÍ¨¹ıÊÂ¼ş´«Öµ¸ø¸¸×é¼ş£¬this.$emit('handChile'£¬params)
+å­----çˆ¶ï¼šé€šè¿‡äº‹ä»¶ä¼ å€¼ç»™çˆ¶ç»„ä»¶ï¼Œthis.$emit('handChile'ï¼Œparams)
+
+4ã€ã€propså¢åŠ æ ¡éªŒè§„åˆ™ã€‘
+Vue.component('row', {
+  props: [
+   content: String,
+   dataL : [Number, String],
+   
+  ],
+  props: {
+	content: {
+		type: String,
+		required: true, // å¿…ä¼ 
+		default: 'xxxx', // é»˜è®¤å€¼
+		validator: function(value){
+			return value.length > 5  // è‡ªå®šä¹‰æ ¡éªŒ
+		}
+	}
+  }
+  template: '<tr>{{content}}</tr>'
+})
+
+5ã€ã€ç»™ç»„ä»¶ç»‘å®šåŸç”Ÿäº‹ä»¶ã€‘
+<child @click.native="handleChild"><child>
+
+6ã€ã€éçˆ¶å­ç»„ä»¶ä¼ å€¼   vuex\ Bus æ€»çº¿ å‘å¸ƒè®¢é˜…æ¨¡å¼ è§‚å¯Ÿè€…æ¨¡å¼ã€‘
+<div>
+  <child content='1'></child>
+  <child content='2'></child>
+</div>
+Vue.prototype.bus = new Vue();
+ Vue.component('child', {
+ data: function() {
+  return {
+    selfContent: this.content,
+  }
+ },
+  props: [
+   content: String,
+  ],
+  template: '<div @click="handleclick">{{selfContent}}</div>',
+  methods: {
+    handleclick: function(){
+	 this.bus.$emit('change', this.selfContent)
+	}
+  },
+  mounted: function(){
+	var _this = this;
+	this.bus.$on('change', function(mes){
+	  _this.selfContent = mes;
+	})
+  }
+})
+
+7ã€ã€slot æ’æ§½ã€‘
+<div>
+  <child content='1'>
+	<p slot="header">xxxx</p>
+  </child>
+</div>
+Vue.component('child', {
+  template: '<div><slot name="header">é»˜è®¤å†…å®¹</slot></div>',   // é»˜è®¤å€¼ä¼šè¢«è¦†ç›–
+})
+
+æ’æ§½ä½œç”¨åŸŸ(ç”¨äºå¾ªç¯ï¼Œæˆ–è€…æ˜¯domç»“æ„ä¸ç¡®å®šæ—¶ä½¿ç”¨)
+<child>
+	<template slot-scope="props">   æ’æ§½æ¥æ”¶å¿…é¡»è¦ä½¿ç”¨template
+	 <li>{{props.item}}</li>
+	</template>
+</child>
+
+Vue.component('child', {
+  template: '<div>
+   <slot v-for="item of list" :item=item></slot>
+  </div>',   // é»˜è®¤å€¼ä¼šè¢«è¦†ç›–
+})
+
+8ã€ã€v-once æ’æ§½ã€‘
+<child-one><child-one>
+<child-two><child-two>
+ç‚¹å‡»æŒ‰é’®ä¸¤ä¸ªç»„ä»¶äº¤æ›¿æ˜¾ç¤º
+
+<component :is="type"></component> type = child-one/child-two
+æ ¹æ®typeçš„å€¼ï¼ŒåŠ¨æ€çš„åŠ è½½å¯¹åº”çš„ç»„ä»¶
+
+<child-one v-once><child-one>
+v-onceé™æ€é¡µé¢å±•ç¤ºæ€§èƒ½æ›´ä½³ï¼Œæ”¾ç½®å†…å­˜é‡Œï¼Œåˆ‡æ¢æ—¶ä¸ä¼šé‡æ–°ç”Ÿæˆè€Œæ˜¯ä»å†…å­˜ä¸­è¯»å–
