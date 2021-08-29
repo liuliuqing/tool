@@ -1,3 +1,6 @@
+https://www.jq22.com/jquery-info819
+
+
 
 模板语法v-text  v-html  v-bind:title v-if v-else-if v-else  v-show
 计算属性Computed： 内置缓存，值没有变化不会执行调用;setter  getert
@@ -116,7 +119,7 @@ Vue.component('child', {
   </div>',   // 默认值会被覆盖
 })
 
-8、【v-once 插槽】
+8、【v-once 插槽  <component :is="type">】
 <child-one><child-one>
 <child-two><child-two>
 点击按钮两个组件交替显示
@@ -126,3 +129,65 @@ Vue.component('child', {
 
 <child-one v-once><child-one>
 v-once静态页面展示性能更佳，放置内存里，切换时不会重新生成而是从内存中读取
+
+
+9、【vue的动画原理：自动给元素添加class】
+:duration // 自定义进入和移出的持续时间：
+appear  // 设置节点在初始渲染的过渡
+type="transtion"  // 动画以transtion时长为准
+ 
+<transition :duration="{ enter: 500, leave: 800 }" name="fade"> 
+    <p v-if="show">hello</p> // v-show
+</transition>
+通过js实现动画效果
+appear
+v-on:before-appear="customBeforeAppearHook"
+v-on:appear="customAppearHook"
+v-on:after-appear="customAfterAppearHook"
+v-on:appear-cancelled="customAppearCancelledHook"
+v-on:before-enter="beforeEnter"
+v-on:enter="enter"
+v-on:after-enter="afterEnter"
+v-on:enter-cancelled="enterCancelled"
+v-on:before-leave="beforeLeave"
+v-on:leave="leave"
+v-on:after-leave="afterLeave"
+v-on:leave-cancelled="leaveCancelled" 
+
+通过css实现动画效果
+x-enter
+x-enter-active,  
+x-leave-to
+x-leave- active
+enter-active-class =""
+leave-active-class=""
+appear-active-class=""
+
+x就是transition的name；如果不设置name 默认是v-enter-active
+也可以自定义这个classname,  enter-active-class="animated tada"  leave-active-class="animated bounceOutRight"
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
+过渡模式mode
+<transition name="fade" mode="out-in">
+  <!-- ... the buttons ... -->
+</transition>
+in-out：新元素先进行过渡，完成之后当前元素过渡离开。
+out-in：当前元素先进行过渡，完成之后新元素过渡进入。
+
+列表过渡transition-group
+
+
+
+
+
+
+
+
+
+
